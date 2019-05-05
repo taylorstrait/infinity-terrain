@@ -33,10 +33,10 @@ def new
   key_nodes << rand(14..18) +   BASE*(rand(6)+12)
   key_nodes << rand(19..21) +   BASE*(rand(6)+12) #14
   
-  key_nodes << rand(5) +        BASE*(rand(6)+18) #15
-  key_nodes << rand(6..11) +    BASE*(rand(6)+18)
-  key_nodes << rand(12..17) +   BASE*(rand(6)+18)
-  key_nodes << rand(18..23) +   BASE*(rand(6)+18) #18
+  key_nodes << rand(4) +        BASE*(rand(6)+18) #15
+  key_nodes << rand(5..10) +    BASE*(rand(6)+18)
+  key_nodes << rand(11..16) +   BASE*(rand(6)+18)
+  key_nodes << rand(17..22) +   BASE*(rand(6)+18) #18
   #key_nodes << rand(21..23) +   BASE*(rand(6)+18) #19
 
   key_nodes[0..4].each do |node|
