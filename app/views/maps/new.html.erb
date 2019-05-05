@@ -1,0 +1,93 @@
+
+
+<table frame="box" class="map">
+  <% 5.times do %>
+    <tr class="top-zone">
+      <% @base.times do %>
+        <%="<td class=height-#{@layout.first}>".html_safe %><%= @layout.shift%></td>
+      <% end %>
+    </tr>
+  <% end %>  
+  <% 1.times do %>
+    <tr class="deploy-top top-zone">
+      <% @base.times do %>
+        <%="<td class=height-#{@layout.first}>".html_safe %><%= @layout.shift%></td>
+      <% end %>
+    </tr>
+  <% end %>
+    <% 12.times do %>
+    <tr>
+      <% @base.times do %>
+        <%="<td class=height-#{@layout.first}>".html_safe %><%= @layout.shift%></td>
+      <% end %>
+    </tr>
+  <% end %>
+  <% 1.times do %>
+    <tr class="deploy-bot bot-zone">
+      <% @base.times do %>
+        <%="<td class=height-#{@layout.first}>".html_safe %><%= @layout.shift%></td>
+      <% end %>
+    </tr>
+  <% end %>
+  <% 5.times do %>
+    <tr class="bot-zone">
+      <% @base.times do %>
+        <%="<td class=height-#{@layout.first}>".html_safe %><%= @layout.shift%></td>
+      <% end %>
+    </tr>
+  <% end %>  
+</table>
+
+<br />
+<table class="bordered" style="width: 50%;" frame="box">
+  <tr>
+    <td class=height-2>2</td>
+    <td>Tall building</td>
+  </tr>  
+  <tr>
+    <td class=height-1>1</td>
+    <td>Short building</td>
+  </tr>  
+  <tr>
+    <td class=height-1t>1.5</td>
+    <td>Rooftop Vis Blocker</td>
+  </tr>
+    <tr>
+    <td class="height-T">T</td>
+    <td>Special Terrain</td>
+  </tr>
+    <tr>
+    <td>s</td>
+    <td>Scatter Terrain</td>
+  </tr>  
+    <tr>
+    <td class="bordered">One Square</td>
+    <td>2" / 5 cm</td>
+  </tr>
+  
+</table>
+
+<h3>Tips</h3>
+<ol>
+  <li>Use the generated layout as a starting point, but tweak as needed. It will sometimes be necessary to space out buildings. Try to maintain the overall layout in terms of open/closed space as generated for more interesting / dynamic games.</li>
+  <li>In general, the red side will have a terrain advantage. This is by design. Remember to design one side with slightly better position.</li>
+  <li>If there is a large gap in the middle that both players want to fill, make sure to put blocking terrain at the halfway point to avoid giving either side an advantage. Consider using a <a href="http://infinitythewiki.com/en/Poor_Visibility_Zone" target="_blank">Poor Visibility Zone</a> to maintain the openness while providing some cover.</li>
+  <li>Special terrain will likely function best as <a href="http://infinitythewiki.com/en/Poor_Visibility_Zone" target="_blank">Poor Visibility</a> (-6 MOD) or <a href="http://infinitythewiki.com/en/Zero_Visibility_Zone" target="_blank">Zero Visibility Zone</a> zones. You can spice that up by also making it <a href="http://infinitythewiki.com/en/Difficult_Terrain" target="_blank">Difficult Terrain</a> so that specialized troops can benefit. If only one player has Multiterrain troops, consider making it that type. If both players have Multiterrain, choose randomly among the supported types.</li>
+</ol>
+
+<h3>Things to Consider When Tweaking</h3>
+<ol>
+<li>Is a sniper position strong but not too dominant?</li>
+<li>If a side has a tactical advantage, are there weaknesses for objectives or airborne deployment?</li>
+<li>How many orders will each side have to spend to approach objectives, and is that balanced among other factors?</li>
+<li>Are there areas on the board that support long range, midrange, and close-range engagements?</li>
+<li>Does the layout support movement skills like superjump and climbing plus?</li>
+</ol>
+
+
+<h3>Useful Links:</h3>
+<ol>
+  <li><a href="http://infinitythewiki.com/en/Setting_up_the_Gaming_Table" target="_blank">http://infinitythewiki.com/en/Setting_up_the_Gaming_Table</a>
+  <li><a href="https://www.thediceabide.com/blog/2018/5/7/infinity-101-special-terrain" target="_blank">https://www.thediceabide.com/blog/2018/5/7/infinity-101-special-terrain</a></li>
+  <li><a href="http://infinitythewiki.com/en/Special_Terrain_Rules" target="_blank">http://infinitythewiki.com/en/Special_Terrain_Rules</li>
+</ol>

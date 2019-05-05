@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+td {
+  height: 2%;
+  width: 2%;
+  text-align: center;
+}
+
+/* tr.deploy-top {
+  border-bottom: 2px solid black;
+}
+
+tr.deploy-bot {
+  border-top: 2px solid black;
+}
+*/
+
+.top-zone {
+  background-color: red;
+}
+
+.bot-zone {
+  background-color: blue;
+}
+
+.bordered {
+  border: 1px solid black;
+}
+
+.height-0 {
+  color: transparent;
+}
+
+.height-1 {
+  background-color: grey;
+  color: transparent;
+  border: 1px solid black;
+}
+
+.height-1t, .height-2t {
+  background-color: grey;
+  color: transparent;
+  border: 1px solid black;
+  background-image: linear-gradient(45deg, grey 25%, #000000 25%, #000000 50%, grey 50%, grey 75%, #000000 75%, #000000 100%);
+background-size: 14.14px 14.14px;
+}
+
+.height-2 {
+  background-color: black;
+  color: transparent;
+  border: 1px solid grey;
+}
+
+.height-3 {
+  color: transparent;
+  border: 1px solid black;
+  background: radial-gradient(grey, black);
+}
+
+.height-T {
+  background-color: green;
+  color: white;
+}
+.map { border-collapse:collapse }
