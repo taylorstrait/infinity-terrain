@@ -20,8 +20,8 @@
 
 
 td {
-  height: 2%;
-  width: 2%;
+  height: 4vw;
+  width: 4vw;
   text-align: center;
 }
 
@@ -61,7 +61,7 @@ tr.deploy-bot {
   color: transparent;
   border: 1px solid black;
   background-image: linear-gradient(45deg, grey 25%, #000000 25%, #000000 50%, grey 50%, grey 75%, #000000 75%, #000000 100%);
-background-size: 14.14px 14.14px;
+  background-size: 14.14px 14.14px;
 }
 
 .height-2 {
@@ -80,4 +80,7 @@ background-size: 14.14px 14.14px;
   background-color: green;
   color: white;
 }
-.map { border-collapse:collapse }
+
+table.map { 
+  border-collapse:collapse;
+ }

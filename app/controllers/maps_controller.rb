@@ -181,7 +181,7 @@ end
 
 def validate_node_spacing(node, layout, width=2, height=2, base=BASE)
   
-    if layout[node] != 0
+    if layout[node] != 0 #check same space
       if node + base*2 > layout.length
         node = node + 2
       else
@@ -189,20 +189,17 @@ def validate_node_spacing(node, layout, width=2, height=2, base=BASE)
       end
     end
     if layout[node - base] != 0 || layout[(node+width) - base] != 0# check above
-      node = node + base
+      node = node + base*2
     end
     if layout[node + base*height] != 0 || layout[(node + width + base*height)] != 0 # check below
-      node = node - base
+      node = node - base*2
     end
 
-    if layout[node + width] != 0 && layout[node - 2] == 0 # check right
-      node = node - 1
+    if layout[node + width] != 0 && layout[node + base*height] != 0 # check right
+      node = node - 2
     end
-    if layout[node - 1] != 0 && layout[node + width + 1] == 0 # check right
-      node = node + 1
-    end
-    if layout[node + base*height] != 0 && layout[node - base*2] == 0 # check vert
-      node = node - base
+    if layout[node - 1] != 0 || layout[node + base*height - 1] != 0 # check left
+      node = node + 2
     end
 
   return node
