@@ -36,7 +36,7 @@ def new
   key_nodes << rand(4) +        BASE*(rand(6)+18) #15
   key_nodes << rand(5..10) +    BASE*(rand(6)+18)
   key_nodes << rand(11..16) +   BASE*(rand(6)+18)
-  key_nodes << rand(17..22) +   BASE*(rand(6)+18) #18
+  key_nodes << rand(17..21) +   BASE*(rand(6)+18) #18
   #key_nodes << rand(21..23) +   BASE*(rand(6)+18) #19
 
   key_nodes[0..4].each do |node|
@@ -85,49 +85,49 @@ def generate_building(node, layout)
   
   case x
 
-  when 1..10 # 2x2
+  when 1..15 # 2x2
     node = validate_node_spacing(node, layout,2,2)
-    node = clamp_horiz(node,2)
+    node = clamp_to_edge(node,2,2)
     
     return [  node, node + 1, 
               node + BASE, node + BASE + 1]
-  when 11..25 # 2x3
+  when 16..25 # 2x3
     node = validate_node_spacing(node, layout,2,3)
-    node = clamp_horiz(node,2)
+    node = clamp_to_edge(node,2,3)
     
     return [  node, node + 1, 
               node + BASE, node + BASE + 1,
               node + BASE*2, node + BASE*2 + 1]
-  when 25..40 # 2x4
+  when 26..35 # 2x4
     node = validate_node_spacing(node, layout,2,4)
-    node = clamp_horiz(node,2)
+    node = clamp_to_edge(node,2,4)
     
     return [  node, node + 1, 
               node + BASE, node + BASE + 1,
               node + BASE*2, node + BASE*2 + 1,
               node + BASE*3, node + BASE*3 + 1]
-  when 41..60 # 3x2
+  when 36..60 # 3x2
     node = validate_node_spacing(node, layout,3,2)
-    node = clamp_horiz(node,3)
+    node = clamp_to_edge(node,3,2)
     
     return [  node, node + 1, node + 2, 
               node + BASE, node + BASE + 1, node + BASE + 2]
   when 61..80 # 4x2
     node = validate_node_spacing(node, layout,4,2)
-    node = clamp_horiz(node,4)
+    node = clamp_to_edge(node,4,2)
     
     return [  node, node + 1, node + 2, node + 3, 
               node + BASE, node + BASE + 1, node + BASE + 2, node + BASE + 3]
   when 81..85 # 3x3
     node = validate_node_spacing(node, layout,3,3)
-    node = clamp_horiz(node,3)
+    node = clamp_to_edge(node,3,3)
     
     return [  node, node + 1, node + 2, 
               node + BASE, node + BASE + 1, node + BASE + 2,
               node + BASE*2, node + BASE*2 + 1, node + BASE*2 + 2]
   when 86..90 # 3x4
     node = validate_node_spacing(node, layout,3,4)
-    node = clamp_horiz(node,3)
+    node = clamp_to_edge(node,3,4)
     
     return [  node, node + 1, node + 2, 
               node + BASE, node + BASE + 1, node + BASE + 2,
@@ -135,15 +135,15 @@ def generate_building(node, layout)
               node + BASE*3, node + BASE*3 + 1, node + BASE*3 + 2]
   when 91..96 # 4x3
     node = validate_node_spacing(node, layout,4,3)
-    node = clamp_horiz(node,4)
+    node = clamp_to_edge(node,4,3)
     
     return [  node, node + 1, node + 2, node + 3, 
               node + BASE, node + BASE + 1, node + BASE + 2,node + BASE + 3,
               node + BASE*2, node + BASE*2 + 1, node + BASE*2 + 2, node + BASE*2 + 3]
   
-  when 96..100 # 4x4
+  when 97..100 # 4x4
     node = validate_node_spacing(node, layout,4,4)
-    node = clamp_horiz(node,4)
+    node = clamp_to_edge(node,4,4)
     
     return [  node, node + 1, node + 2, node + 3, 
               node + BASE, node + BASE + 1, node + BASE + 2,node + BASE + 3,
@@ -172,14 +172,33 @@ def generate_size_with_terrain
   return size
 end
 
-def clamp_horiz(node, width, base=BASE)
-  while base - (node % base) < width 
+# matt's sweet code
+# def clamp_to_edgeeee(node, x, y base=BASE)
+#   originX = node % base
+#   originY = node / base
+#   
+#   if originX + x > base
+#     node -= originX + x - base
+#   end
+# 
+#   if originY + y > base
+#     node -= base * (originY + y - base)
+#   end
+# 
+#   return node
+# end
+
+def clamp_to_edge(node, x, y, base=BASE)
+  while base - (node % base) < x 
     node -= 1
+  end
+  while (node + (base*(y-1))) >= (base*base)
+    node -= base
   end
   return node
 end
 
-def validate_node_spacing(node, layout, width=2, height=2, base=BASE)
+def validate_node_spacing(node, layout, x=2, y=2, base=BASE)
   
     if layout[node] != 0 #check same space
       if node + base*2 > layout.length
@@ -188,17 +207,17 @@ def validate_node_spacing(node, layout, width=2, height=2, base=BASE)
         node = node + base*2
       end
     end
-    if layout[node - base] != 0 || layout[(node+width) - base] != 0 # check above
+    if layout[node - base] != 0 || layout[(node+x) - base] != 0 # check above
       node = node + base*2
     end
-    if layout[node + base*height] != 0 || layout[(node + width + base*height)] != 0 # check below
+    if layout[node + base*y] != 0 || layout[(node + x + base*y)] != 0 # check below
       node = node - base*2
     end
 
-    if layout[node + width] != 0 && layout[node + base*height] != 0 # check right
+    if layout[node + x] != 0 && layout[node + base*y] != 0 # check right
       node = node - 2
     end
-    if layout[node - 1] != 0 || layout[node + base*height - 1] != 0 # check left
+    if layout[node - 1] != 0 || layout[node + base*y - 1] != 0 # check left
       node = node + 2
     end
 
