@@ -37,22 +37,34 @@
 </table>
 
 <br />
-<table class="bordered" style="width: 50%;" frame="box">
+
+<table class="bordered" style="width: 100%;" frame="box">
   <tr>
     <td class=height-2>2</td>
-    <td>Tall building</td>
+    <td>Tall building</td>    
+    <td>Current Seed</td>
   </tr>  
   <tr>
     <td class=height-1>1</td>
     <td>Short building</td>
+    <td>
+      <%= form_tag :root, method: :get, enforce_utf8: false do %>
+        <%= text_field_tag :seed, @seed, class: "seed_field", size: 6 %>
+        
+    </td>
   </tr>  
   <tr>
     <td class=height-1t>1.5</td>
     <td>Rooftop Vis Blocker</td>
+    <td>
+      <%= submit_tag "Generate From Seed", name: nil %>
+      <% end %>
+    </td>
   </tr>
     <tr>
     <td class="height-T">T</td>
     <td>Special Terrain</td>
+    <td><%= button_to "New Random Map", "/?seed=#{@next_seed}" %></td>
   </tr>
     <tr>
     <td>s</td>

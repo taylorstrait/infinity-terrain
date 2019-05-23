@@ -3,6 +3,24 @@ BASE = 24
 
 
 def new 
+  
+  # add url for seed on initial load
+  unless request.parameters[:seed]
+    redirect_to "/?seed=#{rand(100000)}"
+  end
+  
+  ##### generate seed(s) #####
+  # clear srand and set next seed
+  srand
+  @next_seed = rand(100000)
+  
+  # set srand to seed or random
+  if !request.parameters[:seed].blank?
+    @seed = request.parameters[:seed].to_i
+  else
+    @seed = rand(100000)
+  end
+  srand @seed
 
   # create empty grid
   @base = BASE
@@ -223,4 +241,8 @@ def validate_node_spacing(node, layout, x=2, y=2, base=BASE)
 
   return node
 end
+
+
+
+
 end
