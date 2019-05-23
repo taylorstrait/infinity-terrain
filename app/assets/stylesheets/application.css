@@ -35,11 +35,11 @@ tr.deploy-bot {
 */
 
 .top-zone {
-  background-color: red;
+  background-color: rgb(255, 91, 91);
 }
 
 .bot-zone {
-  background-color: blue;
+  background-color: rgb(91, 123, 255);
 }
 
 .bordered {
